@@ -6,4 +6,3 @@ A Java implementation of a Tic Tac Toe game meant to be played in the console. T
 - **Input validation**: Ensures player moves are valid and prevents overwriting existing moves.
 - **Customizable board size**: Play on boards larger than the standard 3x3 grid, such as 4x4 or 5x5. (**WIP**)
 - **Replay option**: Restart the game after completing a round without restarting the program.
-- **Scoreboard**: Keeps track of wins, losses, and ties for the players during the session. (**WIP**)
