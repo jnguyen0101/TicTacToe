@@ -58,7 +58,7 @@ public class TicTacToeGame {
             System.out.println("Please choose the CPU difficulty: easy(e), medium(m), or hard(h)");
             String diff = sc.next().toLowerCase();
             while (true) {
-                if (!diff.equals("e") && !diff.equals("m") && !diff.equals("d")) {
+                if (!diff.equals("e") && !diff.equals("m") && !diff.equals("h")) {
                     System.out.println("Please enter a valid option: 'e', 'm', or 'h'.");
                 } else {
                     break;
@@ -108,10 +108,6 @@ public class TicTacToeGame {
                 
                 boolean hasWon = false;
                 while (!hasWon) {
-                    if (spotsLeft == 0) {
-                        System.out.println("\nThere's a tie!");
-                        break;
-                    }
                     System.out.println("\nRound number " + roundNum + "\n");
                     delay(1000);
                     board.printBoard();
@@ -134,7 +130,6 @@ public class TicTacToeGame {
                                 sc.next();
                             }
                         }
-                        delay(1000);
                         int[] playerMove = player1.makeMove(num);
                         board.updateBoard(playerMove, currentPlayer);
                         currentPlayer = player2.getSymbol();
@@ -159,7 +154,6 @@ public class TicTacToeGame {
                                     sc.next();
                                 }
                             }
-                            delay(1000);
                             int[] playerMove = player2.makeMove(num);
                             board.updateBoard(playerMove, currentPlayer);
                             currentPlayer = player1.getSymbol();
@@ -167,15 +161,18 @@ public class TicTacToeGame {
                             delay(1000);
                         } else {
                             delay(2000);
-                            System.out.println("CPU: I am thinking...");
-                            delay(1000);
+                            System.out.print("CPU: I am thinking.");
+                            delay(500);
+                            System.out.print(".");
+                            delay(500);
+                            System.out.println(".");
+                            delay(2000);
                             
                             int ran = (int) (Math.random() * 9 + 1);
                             while(!board.validateMove(ran)) {
                                 ran = (int) (Math.random() * 9 + 1);
                             }
                             System.out.println("CPU: Okay! I choose " + ran + ".");
-                            delay(1000);
                             int[] playerMove = player2.makeMove(ran);
                             board.updateBoard(playerMove, currentPlayer);
                             currentPlayer = player1.getSymbol();
@@ -185,9 +182,17 @@ public class TicTacToeGame {
                     }
                     hasWon = board.checkForWinner();
                     roundNum++;
+                    
+                    if (spotsLeft == 0) {
+                        System.out.println("\nThere's a tie!\n");
+                        break;
+                    }
                 }
-                String winner = currentPlayer == player2.getSymbol() ? "Player 1" : "Player 2";
-                System.out.println("\n" + winner + " has won!\n");
+                
+                if (spotsLeft != 0) {
+                    String winner = currentPlayer == player2.getSymbol() ? "Player 1" : "Player 2";
+                    System.out.println("\n" + winner + " has won!\n");
+                }
                 delay(1000);
                 board.printBoard();
                 delay(1000);
