@@ -1,6 +1,5 @@
 # Tic Tac Toe
-A Java implementation of a Tic Tac Toe game meant to be played in the console. This repository contains a simple implementation of the classic Tic Tac Toe game written in Java.
-The game can be played by two players taking turns on the same system or by one player against a CPU.
+A Java implementation of a Tic Tac Toe game meant to be played in the console. The game can be played by two players taking turns on the same system or by one player against a CPU.
 ## Features
 - **Two-player mode**: Play with a friend on the same computer.
 - **CPU opponent mode**: Challenge a CPU with adjustable difficulty levels (Easy, Medium, Hard). **WIP**
