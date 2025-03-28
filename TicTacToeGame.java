@@ -168,12 +168,20 @@ public class TicTacToeGame {
                             System.out.println(".");
                             delay(2000);
                             
-                            int ran = (int) (Math.random() * 9 + 1);
-                            while(!board.validateMove(ran)) {
-                                ran = (int) (Math.random() * 9 + 1);
+                            int num = 0;
+                            if (difficulty == TicTacToeDifficulty.EASY) {
+                                num = (int) (Math.random() * 9 + 1);
+                                while(!board.validateMove(num)) {
+                                    num = (int) (Math.random() * 9 + 1);
+                                }
+                            } else if (difficulty == TicTacToeDifficulty.MEDIUM) {
+                                num = Player.comMedium(board, player2.getSymbol());
+                            } else {
+                                num = Player.comHard(board, player2.getSymbol());
                             }
-                            System.out.println("CPU: Okay! I choose " + ran + ".");
-                            int[] playerMove = player2.makeMove(ran);
+                            
+                            System.out.println("CPU: Okay! I choose " + num + ".");
+                            int[] playerMove = player2.makeMove(num);
                             board.updateBoard(playerMove, currentPlayer);
                             currentPlayer = player1.getSymbol();
                             spotsLeft--;
