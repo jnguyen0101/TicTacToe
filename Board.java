@@ -17,6 +17,14 @@ public class Board {
     }
     
     /**
+     * Gets the current board
+     * @return a 2d char array representing the board
+     */
+    public char[][] getBoard() {
+        return board;
+    }
+    
+    /**
      * Updates the game board
      * @param coords The coordinates to place the symbol [r][c]
      * @param symbol The symbol, 'X' or 'O', to be put in the spot
@@ -44,6 +52,7 @@ public class Board {
         if (board[row][column] != ' ') {
             return false;
         }
+        
         return true;
     }
     
@@ -56,14 +65,10 @@ public class Board {
         for (int i = 0; i < board[0].length; i++ ) {
             char hor = board[i][0];
             if (hor == ' ') break;
+            
             for (int j = 1; j < board.length; j++) {
-                if (board[i][j] != hor) {
-                    break;
-                }
-                
-                if (j == board.length - 1) {
-                    return true;
-                }
+                if (board[i][j] != hor) break;
+                if (j == board.length - 1) return true;
             }
         }
         
@@ -71,14 +76,10 @@ public class Board {
         for (int j = 0; j < board.length; j++) {
             char ver = board[0][j];
             if (ver == ' ') break;
+            
             for (int i = 1; i < board[0].length; i++) {
-                if (board[i][j] != ver) {
-                    break;
-                }
-                
-                if (i == board.length - 1) {
-                    return true;
-                }
+                if (board[i][j] != ver) break;
+                if (i == board.length - 1) return true;
             }
         }
         
@@ -86,13 +87,8 @@ public class Board {
         char diag1 = board[0][0];
         if (diag1 != ' ') {
             for (int i = 1; i < board[0].length; i++) {
-                if (board[i][i] != diag1) {
-                    break;
-                }
-     
-                if (i == board.length - 1) {
-                    return true;
-                }
+                if (board[i][i] != diag1) break;
+                if (i == board.length - 1) return true;
             }
         }
         
@@ -100,15 +96,11 @@ public class Board {
         char diag2 = board[0][board.length - 1];
             if (diag2 != ' ') {
             for (int i = 1; i < board[0].length; i++) {
-                if (board[i][board.length - 1 - i] != diag2) {
-                    break;
-                }
-                
-                if (i == board.length - 1) {
-                    return true;
-                }
+                if (board[i][board.length - 1 - i] != diag2) break;
+                if (i == board.length - 1) return true;
             }
         }
+            
         return false;
     }
     
